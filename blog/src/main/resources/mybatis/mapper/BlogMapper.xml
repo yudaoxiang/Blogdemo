@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aaa.blog.mapper.BlogMapper">
+    <select id="getBlogbyId" resultType="com.aaa.blog.entity.Blog">
+        select * from blogtable where id=#{id}
+    </select>
+
+    <select id="selectAll" resultType="com.aaa.blog.entity.Blog">
+        SELECT * FROM `blogtable`
+    </select>
+
+    <insert id="insertBlog" useGeneratedKeys="true" keyProperty="id">
+        insert into `blogtable` (id,title,content,summary,updatetime,createtime) values (#{id},#{title},#{summary},#{content},#{updatetime},#{createtime})
+    </insert>
+    <update id="updateBlog" >
+        UPDATE  `blogtable`  SET `title`=#{title},`content`=#{content},`summary`=#{summary},`updatetime`=#{updatetime},`createtime`=#{createtime} WHERE id=#{id}
+
+    </update>
+</mapper>
